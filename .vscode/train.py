@@ -31,7 +31,6 @@ class Train:
         btn1_1.place(x=0,y=345,width=1380,height=50)
 
         image_bottom = Image.open(r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\bottom.jpg")
-    
         image_bottom = image_bottom.resize((1380, 300), Image.Resampling.LANCZOS)
         self.photo_img_bottom = ImageTk.PhotoImage(image_bottom)
 
@@ -48,7 +47,7 @@ class Train:
 
 
         for image in path:
-            img=Image.open(image).convert('L')  #Grey scale image
+            img=Image.open(image).convert('L')  
             imageNp=np.array(img,'uint8')
             id=int(os.path.split(image)[1].split('.')[1])
 
@@ -59,19 +58,12 @@ class Train:
         ids=np.array(ids)
 
 
-        # train the classifier and save
+        
         clsf=cv2.face.LBPHFaceRecognizer_create()
         clsf.train(faces,ids)
         clsf.write("classifier.xml")
         cv2.destroyAllWindows()
         messagebox.showinfo("Result","Training of dataset completed!!")
-
-
-        
-
-
-
-
 
 
 if __name__ == "__main__":
