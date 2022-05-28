@@ -12,33 +12,31 @@ class Train:
     def __init__(self, root):
         self.root = root
         self.root.geometry("1530x790+0+0")
-        self.root.title("face Recognition System")
+        self.root.title("Face Recognition System")
 
-        title_lbl = Label(self.root, text="TRAIN DATA SET", font=(
+        title_label = Label(self.root, text="TRAIN DATA SET", font=(
             "comicsansns", 25, "bold"), bg="white", fg="purple")
-        title_lbl.place(x=0, y=0, width=1490, height=45)
+        title_label.place(x=0, y=0, width=1490, height=45)
 
 
-        img_top = Image.open(
-            r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\faces.png")
-        img_top = img_top.resize((1380, 300), Image.Resampling.LANCZOS)
-        self.photoimg_top = ImageTk.PhotoImage(img_top)
+        image_top = Image.open(r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\faces.png")
+        image_top = image_top.resize((1380, 300), Image.Resampling.LANCZOS)
+        self.photo_img_top = ImageTk.PhotoImage(image_top)
 
-        f_lbl = Label(self.root, image=self.photoimg_top)
-        f_lbl.place(x=0, y=45, width=1380, height=300)
+        f_label = Label(self.root, image=self.photo_img_top)
+        f_label.place(x=0, y=45, width=1380, height=300)
 
 
-        b1_1=Button(self.root,text="TRAIN DATA ",command=self.train_classifier,cursor="hand2",font=("times new roman",30,"bold"),bg="dark blue",fg="white")
-        b1_1.place(x=0,y=345,width=1380,height=50)
+        btn1_1=Button(self.root,text="TRAIN DATA ",command=self.train_classifier,cursor="hand2",font=("comicsansns",30,"bold"),bg="brown",fg="white")
+        btn1_1.place(x=0,y=345,width=1380,height=50)
 
-        img_bottom = Image.open(
-            r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\m.jpg")
+        image_bottom = Image.open(r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\bottom.jpg")
     
-        img_bottom = img_bottom.resize((1380, 300), Image.Resampling.LANCZOS)
-        self.photoimg_bottom = ImageTk.PhotoImage(img_bottom)
+        image_bottom = image_bottom.resize((1380, 300), Image.Resampling.LANCZOS)
+        self.photo_img_bottom = ImageTk.PhotoImage(image_bottom)
 
-        f_lbl = Label(self.root, image=self.photoimg_bottom)
-        f_lbl.place(x=0, y=395, width=1380, height=300)
+        f_label = Label(self.root, image=self.photo_img_bottom)
+        f_label.place(x=0, y=395, width=1380, height=300)
 
     def train_classifier(self):
         data_dir=("data")
@@ -62,11 +60,11 @@ class Train:
 
 
         # train the classifier and save
-        clf=cv2.face.LBPHFaceRecognizer_create()
-        clf.train(faces,ids)
-        clf.write("classifier.xml")
+        clsf=cv2.face.LBPHFaceRecognizer_create()
+        clsf.train(faces,ids)
+        clsf.write("classifier.xml")
         cv2.destroyAllWindows()
-        messagebox.showinfo("Result","Training dataset completed!!")
+        messagebox.showinfo("Result","Training of dataset completed!!")
 
 
         

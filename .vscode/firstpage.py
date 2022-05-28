@@ -6,150 +6,126 @@ import tkinter
 import os
 from time import strftime
 from datetime import datetime
-from sd import Student 
+from studentDetails import Student 
 from train import Train
 from faceDetector import Face_Recognition
-# from attendance import Attendance
-# from developer import Developer
-# from help import Help
 
-class Face_Recognition_System:
+
+class Face_recognition_System:
  def __init__(self,root):
     self.root = root
-    self.root.geometry("1530x790+0+0")
-    self.root.title("face Recognition System")
+    self.root.geometry("1380x790+0+0")
+    self.root.title("Face Recognition System")
 
-    img=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\a.jpg")
-    img=img.resize((1380,200),Image.Resampling.LANCZOS)
-    self.photoimg = ImageTk.PhotoImage(img)
+    image1=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\faces.jpg")
+    image1=image1.resize((1380,200),Image.Resampling.LANCZOS)
+    self.photoimg1 = ImageTk.PhotoImage(image1)
 
-    f_lbl=Label(self.root,image=self.photoimg)
-    f_lbl.place(x=0,y=0,width=1380,height=200)
+    f_label=Label(self.root,image=self.photoimg1)
+    f_label.place(x=0,y=0,width=1380,height=200)
 
-    img3=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\bg.jpg")
-    img3=img3.resize((1380,710),Image.ANTIALIAS)
-    self.photoimg3 = ImageTk.PhotoImage(img3)
+    image2=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\background.jpg")
+    image2=image2.resize((1380,710),Image.Resampling.LANCZOS)
+    self.photoimg2 = ImageTk.PhotoImage(image2)
 
-    bg_img=Label(self.root,image=self.photoimg3)
-    bg_img.place(x=0,y=200,width=1380,height=710)
+    backg_img=Label(self.root,image=self.photoimg2)
+    backg_img.place(x=0,y=200,width=1380,height=710)
 
-    title_lbl=Label(bg_img,text="FACE  RECOGNITION  ATTENDENCE  SYSTEM  SOFTWARE",font=("comicsansns",25,"bold"),bg="white",fg="purple")
-    title_lbl.place(x=0,y=0,width=1380,height=40)
+    ttl_label=Label(backg_img,text="FACE  RECOGNITION  ATTENDENCE  SYSTEM ",font=("comicsansns",25,"bold"),bg="white",fg="purple")
+    ttl_label.place(x=0,y=0,width=1380,height=40)
      
 
     def time():
         string=strftime('%H:%M:%S %p')
-        lbl.config(text=string)
-        lbl.after(1000,time)
+        label.config(text=string)
+        label.after(1000,time)
 
-    lbl=Label(title_lbl, font=("times new roman",15,"bold"),bg="white",fg="dark blue")
-    lbl.place(x=0,y=0,width=110,height=40)
+    label=Label(ttl_label, font=("times new roman",15,"bold"),bg="white",fg="dark blue")
+    label.place(x=0,y=0,width=110,height=40)
     time()
 
-    img4=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\student.jpg")
-    img4=img4.resize((150,150),Image.ANTIALIAS)
-    self.photoimg4 = ImageTk.PhotoImage(img4)
+    image3=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\student.jpg")
+    image3=image3.resize((180,180),Image.Resampling.LANCZOS)
+    self.photoimg3 = ImageTk.PhotoImage(image3)
     
-    b1=Button(bg_img,image=self.photoimg4,cursor="hand2",command=self.student_details)
-    b1.place(x=100,y=180,width=150,height=150)
+    btn1=Button(backg_img,image=self.photoimg3,cursor="hand2",command=self.studentDetails)
+    btn1.place(x=120,y=160,width=180,height=180)
 
-    b1_1=Button(bg_img,text="Student Details",cursor="hand2",command=self.student_details,font=("times new roman",14,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=100,y=315,width=150,height=30)
+    btn1_1=Button(backg_img,text="Student Details",cursor="hand2",command=self.studentDetails,font=("comicsansns",14,"bold"),bg="dark blue",fg="white")
+    btn1_1.place(x=120,y=330,width=180,height=30)
 
 
-    img5=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\d.jpg")
+    image4=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\Train.jpg")
     
-    img5=img5.resize((150,150),Image.ANTIALIAS)
-    self.photoimg5 = ImageTk.PhotoImage(img5)
+    image4=image4.resize((180,180),Image.Resampling.LANCZOS)
+    self.photoimg4 = ImageTk.PhotoImage(image4)
     
-    b1=Button(bg_img,image=self.photoimg5,cursor="hand2",command=self.train_data)
-    b1.place(x=300,y=180,width=150,height=150)
+    btn1=Button(backg_img,image=self.photoimg4,cursor="hand2",command=self.train_Data)
+    btn1.place(x=360,y=160,width=180,height=180)
 
-    b1_1=Button(bg_img,text="Train Data",cursor="hand2",command=self.train_data,font=("times new roman",15,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=300,y=315,width=150,height=30)
+    btn1_1=Button(backg_img,text="Train Data",cursor="hand2",command=self.train_Data,font=("comicsansns",15,"bold"),bg="dark blue",fg="white")
+    btn1_1.place(x=360,y=330,width=180,height=30)
 
-    
-
-    img6=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\b.png")
-    img6=img6.resize((150,150),Image.ANTIALIAS)
-    self.photoimg6 = ImageTk.PhotoImage(img6)
-    
-    b1=Button(bg_img,image=self.photoimg6,cursor="hand2",command=self.face_data)
-    b1.place(x=500,y=180,width=150,height=150)
-
-    b1_1=Button(bg_img,text="Face Detectors",cursor="hand2",command=self.face_data,font=("times new roman",15,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=500,y=315,width=150,height=30)
-
-    img8=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\c.jpg")
-    
-    img8=img8.resize((150,150),Image.ANTIALIAS)
-    self.photoimg8 = ImageTk.PhotoImage(img8)
-    
-    b1=Button(bg_img,image=self.photoimg8,cursor="hand2")
-    b1.place(x=700,y=180,width=150,height=150)
-
-    b1_1=Button(bg_img,text="Attendance",cursor="hand2",font=("times new roman",15,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=700,y=315,width=150,height=30)
     
 
-    img9=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\e.png")
-    img9=img9.resize((150,150),Image.ANTIALIAS)
-    self.photoimg9 = ImageTk.PhotoImage(img9)
+    image5=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\faceRecog.png")
+    image5=image5.resize((180,180),Image.Resampling.LANCZOS)
+    self.photoimg5 = ImageTk.PhotoImage(image5)
     
-    b1=Button(bg_img,image=self.photoimg9,cursor="hand2",command=self.open_img)
-    b1.place(x=900,y=180,width=150,height=150)
+    btn1=Button(backg_img,image=self.photoimg5,cursor="hand2",command=self.face_Data)
+    btn1.place(x=600,y=160,width=180,height=180)
 
-    b1_1=Button(bg_img,text="Photos",cursor="hand2",command=self.open_img,font=("times new roman",15,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=900,y=315,width=150,height=30)
+    btn1_1=Button(backg_img,text="Face Detector",cursor="hand2",command=self.face_Data,font=("comicsansns",15,"bold"),bg="dark blue",fg="white")
+    btn1_1.place(x=600,y=330,width=180,height=30)
+
+    
     
 
-    img11=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\g.png")
-    img11=img11.resize((150,150),Image.ANTIALIAS)
-    self.photoimg11 = ImageTk.PhotoImage(img11)
+    image6=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\photos.png")
+    image6=image6.resize((180,180),Image.Resampling.LANCZOS)
+    self.photoimg6 = ImageTk.PhotoImage(image6)
     
-    b1=Button(bg_img,image=self.photoimg11,cursor="hand2",command=self.iExit)
-    b1.place(x=1100,y=180,width=150,height=150)
+    btn1=Button(backg_img,image=self.photoimg6,cursor="hand2",command=self.open_img)
+    btn1.place(x=840,y=160,width=180,height=180)
 
-    b1_1=Button(bg_img,text="Exit",cursor="hand2",command=self.iExit,font=("times new roman",15,"bold"),bg="dark blue",fg="white")
-    b1_1.place(x=1100,y=315,width=150,height=30)
+    btn1_1=Button(backg_img,text="Photos",cursor="hand2",command=self.open_img,font=("comicsansns",15,"bold"),bg="dark blue",fg="white")
+    btn1_1.place(x=840,y=330,width=180,height=30)
+    
+
+    image7=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\exit.png")
+    image7=image7.resize((180,180),Image.Resampling.LANCZOS)
+    self.photoimg7 = ImageTk.PhotoImage(image7)
+    
+    btn1=Button(backg_img,image=self.photoimg7,cursor="hand2",command=self.Exit)
+    btn1.place(x=1080,y=160,width=180,height=180)
+
+    btn1_1=Button(backg_img,text="Exit",cursor="hand2",command=self.Exit,font=("comicsansns",15,"bold"),bg="dark blue",fg="white")
+    btn1_1.place(x=1080,y=330,width=180,height=30)
 
  def open_img(self):
      os.startfile("data")
 
- def iExit(self):
-     self.iExit=tkinter.messagebox.askyesno("Face Recognition","Are you sure you want to exit",parent=self.root)
-     if  self.iExit>0:
+ def Exit(self):
+     self.Exit=tkinter.messagebox.askyesno("Face Recognition","Are you sure you want to exit",parent=self.root)
+     if  self.Exit>0:
          self.root.destroy()
      else:
         return
 
 
- def student_details(self):
+ def studentDetails(self):
     self.new_window=Toplevel(self.root)
     self.app=Student(self.new_window)
 
- def train_data(self):
+ def train_Data(self):
     self.new_window=Toplevel(self.root)
     self.app=Train(self.new_window)
 
- def face_data(self):
+ def face_Data(self):
     self.new_window=Toplevel(self.root)
     self.app=Face_Recognition(self.new_window)
 
-#  def attendance_data(self):
-#     self.new_window=Toplevel(self.root)
-#     self.app=Attendance(self.new_window)
-
-#  def developer_data(self):
-#     self.new_window=Toplevel(self.root)
-#     self.app=Developer(self.new_window)
-
-#  def help_data(self):
-#     self.new_window=Toplevel(self.root)
-#     self.app=Help(self.new_window)
-
-
 if __name__ == "__main__":
     root=Tk()
-    obj=Face_Recognition_System(root)
+    obj=Face_recognition_System(root)
     root.mainloop()
