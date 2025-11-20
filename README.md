@@ -48,4 +48,4 @@ Developed a **real-time biometric attendance system** as part of Microsoft Engag
 ## How to Run
 1. Clone the repository:  
 ```bash
-git clone https://github.com/yourusername/Face_Recognition_Attendance.git
+git clone https://github.com/chelsi123/FaceRecognitionWebsite.git
