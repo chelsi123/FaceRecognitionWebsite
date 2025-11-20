@@ -49,5 +49,3 @@ Developed a **real-time biometric attendance system** as part of Microsoft Engag
 1. Clone the repository:  
 ```bash
 git clone https://github.com/yourusername/Face_Recognition_Attendance.git
-2. pip install opencv-python mysql-connector-python
-3. python main.py
