@@ -8,14 +8,14 @@ from cv2 import cvtColor
 import mysql.connector
 from time import strftime
 from datetime import datetime
-import cv2
+import cv2  
 import os
 import numpy as np
 
 
-class Face_Recognition:
+class     Face_Recognition:
     def __init__(self, root):
-        self.root = root
+        self.root =  root
         self.root.geometry("1530x790+0+0")
         self.root.title("face Recognition System")
 
