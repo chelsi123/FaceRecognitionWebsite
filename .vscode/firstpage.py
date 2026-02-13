@@ -15,7 +15,7 @@ class Face_recognition_System:
  def __init__(self,root):
     self.root = root
     self.root.geometry("1380x790+0+0")
-    self.root.title("Face Recognition System")
+    self.root.title("Face    Recognition System")
 
     image1=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\faces.jpg")
     image1=image1.resize((1380,200),Image.Resampling.LANCZOS)
