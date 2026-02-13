@@ -15,13 +15,15 @@ class Face_recognition_System:
  def __init__(self,root):
     self.root = root
     self.root.geometry("1380x790+0+0")
-    self.root.title("Face    Recognition System")
+    self.root.title("Face Recognition System")
 
     image1=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\faces.jpg")
     image1=image1.resize((1380,200),Image.Resampling.LANCZOS)
     self.photoimg1 = ImageTk.PhotoImage(image1)
 
     f_label=Label(self.root,image=self.photoimg1)
+    
+    
     f_label.place(x=0,y=0,width=1380,height=200)
 
     image2=Image.open (r"C:\Users\dell\OneDrive - Indian Institute of Technology (BHU), Varanasi\Desktop\attendance system\Images\background.jpg")
